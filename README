@@ -1,9 +1,19 @@
-Basic usage
+##Basic usage##
 
-Search 
+
+#Search#
 ./trrnt.rb search taken
 ./trrnt.rb s taken
 ./trrnt.rb -src isohunt,piratebay s taken
 
 Taken.abc.encodedbydude		ISOHUNT 	http://isohunt.com/download/abc
 Taken.abc.[AAA]ydude		ISOHUNT 	http://isohunt.com/download/abc
+
+
+#Download#
+./trrnt.rb dl taken
+./trrnt.rb -src isohunt,piratebay dl taken
+
+Found X matches...
+Download first match {filename}
+Output from ctorrent
