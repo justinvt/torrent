@@ -7,6 +7,8 @@ class Isohunt < Domain
     File.join(@@domain, :torrents, "?ihq=#{@search}")
   end
   
+  
+  ##This needs a lot of writing
   def trajectory
     [
       [start, ""],
@@ -14,9 +16,9 @@ class Isohunt < Domain
     ]
   end
   
-  def search
-    t = Torrent.new(@search, @url)
-  end
+#  def search
+#    t = Torrent.new(@search, @url)
+#  end
   
   def search(search_term, options={})
     puts "searching for #{search_term}"
@@ -29,18 +31,7 @@ class Isohunt < Domain
     end
     torrent_page = agent.get construct_link(options[:site], page)
     regexp = Regexp.new("\/download[a-zA-Z0-9\/]+")
-    torrent_link =  domain.to_s + torrent_page.search("a").select{|a| a["onclick"].to_s.match(regexp) != nil }[0]["onclick"].scan(regexp)[0].to_s
-    torrent_contents = agent.get_file(torrent_link).to_s
-    filename = search_term + ".torrent"
-  if File.exist?(filename)
-    download_torrent(filename)
-  else
-    f = File.open(filename,"w+")
-    f.puts torrent_contents
-    f.close
-    system "sudo chmod 777 taken.torrent"
-    download_torrent(filename)
-  end
+    torrents =  @@domain + torrent_page.search("a").select{|a| a["onclick"].to_s.match(regexp) != nil }[0]["onclick"].scan(regexp)[0].to_s
   end
 
   
