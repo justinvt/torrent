@@ -8,7 +8,7 @@ sudo port install ctorrent
 sudo gem install mechanize
 sudo gem install hpricot
 
-cd trrnt
+cd torrent
 sudo chmod +x trrnt.rb
 sudo mv trrnt.rb /usr/local/bin/trrnt (or something like that to make it an executable wherever you'd like)
 
